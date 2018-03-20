@@ -16,4 +16,9 @@ export class HeroService {
   //MessageService is a singleton. This is a typical service-in-service
   constructor(private messageService: MessageService) { }
 
+  getHero(id: number): Observable<Hero> {
+    this.messageService.add('HeroService: fetched hero id = ${id}');
+    return of(HEROES.find(hero => hero.id === id))
+  }
+
 }
