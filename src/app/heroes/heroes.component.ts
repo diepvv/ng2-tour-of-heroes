@@ -20,7 +20,7 @@ export class HeroesComponent implements OnInit {
     //subscribe in HeroesComponent
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes)
   }
-  
+
 // funtion add a hero to heroes
   add(name: string): void {
     name = name.trim();
@@ -31,4 +31,9 @@ export class HeroesComponent implements OnInit {
       });
   }
 
+  // delete a hero from heroes
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero).subscribe();
+  }
 }
